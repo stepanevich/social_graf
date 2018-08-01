@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>VK 6Handshakes</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+    <link rel='stylesheet' href='/static/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/static/css/main.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  </head>
+
+  <body>
+    {% include 'top_nav.html' %}
+
+    <div class='container'>
+      <h1>Результат поиска</h1>
+      <!-- Just leave it here for a while
+      {% if not state == 'found' %}
+        <a class='btn btn-primary' href='javascript:;' role='button' onClick="checkStatus()">Проверить состояние</a>
+      {% endif %}
+      -->
+      <br>
+      {% if user and target_user %}
+        <h3 class='text-center'>Ищем общих знакомых между:</h3>
+        <br>
+
+        <div class='text-right inline' data-user-id="{{ user.get('id') }}" style='width: 43%;'>
+          <strong>{{ user.get('first_name') + ' ' + user.get('last_name') }}</strong>&nbsp;&nbsp;<img class='rounded' src="{{ user.get('photo_50') }}">
+        </div>
+        <div class='text-center inline' style='width: 10%;'>
+          <h2>и</h2>
+        </div>
+        <div class='text-left inline' data-target-user-id="{{ target_user.get('id') }}" style='width: 43%;'>
+          <img class='rounded' src="{{ target_user.get('photo_50') }}">&nbsp;&nbsp;<strong>{{ target_user.get('first_name') + ' ' + target_user.get('last_name') }}</strong>
+        </div>
+        <br>
+        <br>
+      {% endif %}
+
+      {% if message %}
+        <h3 class='text-center {{ state }}' id='message'>
+          {% if state == 'inprogress' %}
+            <i class='fa fa-refresh fa-spin' style='font-size:24px'></i>
+          {% endif %}
+          {{ message }}
+        </h3>
+        <br>
+      {% endif %}
+
+      <div class='row justify-content-center' id='results-table'>
+        {% if path_users %}
+          {% include 'results_table.html' ignore missing %}
+        {% endif %}
+      </div>
+
+      <a class='btn btn-primary' href='/' role='button' style='margin-bottom: 20px;'>Назад</a>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
+    <script src='/static/js/bootstrap.min.js'></script>
+    <script src='/static/js/main.js'></script>
+  </body>
+</html>

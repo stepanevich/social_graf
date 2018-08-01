@@ -1,0 +1,23 @@
+body {
+    margin-top: 80px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.linked {
+  cursor: pointer;
+}
